@@ -1,0 +1,17 @@
+#app {
+	h1 {
+		color: orange;
+	}
+	a:visited {
+		color: blue;
+	}
+}
+
+.form{
+	.formLabel{
+		display: block;
+	}
+	.error{
+		color: red;
+	}
+}

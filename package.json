@@ -1,0 +1,48 @@
+{
+  "name": "react-redux-template",
+  "version": "0.1.0",
+  "description": "React Redux Template",
+  "main": "run.js",
+  "dependencies": {
+    "babel-core": "6.23.0",
+    "babel-loader": "6.3.0",
+    "babel-preset-latest": "6.22.0",
+    "babel-preset-react": "6.22.0",
+
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.3.0",
+
+    "css-loader": "0.26.1",
+    "sass-loader": "6.0.0",
+    "node-sass": "4.5.0",
+    "style-loader": "0.13.1",
+    "file-loader": "0.10.0",
+    "extract-text-webpack-plugin": ">=2.0.0-rc.0 <2.0.1",
+
+
+    "react": "15.4.2",
+    "react-dom": "15.4.2",
+    "react-redux": "5.0.2",
+    "react-router": "3.0.2",
+    "react-router-redux": "4.0.7",
+    "redux": "3.6.0",
+    "redux-saga": "0.14.3",
+    "react-redux-form": "1.5.5",
+
+    "normalizr": "3.2.0"
+  },
+  "scripts": {
+    "compile": "node_modules/.bin/webpack",
+    "start": "node_modules/.bin/webpack-dev-server --progress --colors",
+    "test": "echo \"No tests yet\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@your.git.url"
+  },
+  "keywords": [
+    "react", "redux", "template"
+  ],
+  "author": "Mark Holmes",
+  "license": "MIT"
+}

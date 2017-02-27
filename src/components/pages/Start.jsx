@@ -11,7 +11,7 @@ export default class Start extends React.Component {
 	render() {
 		return (
 			<div>
-				<img src={logoSrc} height="300px" />
+				<img src={logoSrc} width="400px" />
 				<h1>Dashboard</h1>
 				<ul>
 					<li><Link to="/login">Log In</Link></li>

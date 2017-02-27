@@ -3,7 +3,7 @@ import {submitRegistration} from '../../actions';
 import RegisterForm from '../../components/forms/RegisterForm.jsx';
 import { browserHistory } from 'react-router';
 
-import { actions } from 'react-redux-form'
+import { actions } from 'react-redux-form';
 
 const mapStateToProps = (state) => ({});
 

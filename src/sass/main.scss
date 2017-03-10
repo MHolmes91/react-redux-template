@@ -1,6 +1,6 @@
 #app {
 	h1 {
-		color: orange;
+		color: grey;
 	}
 	a:visited {
 		color: blue;
@@ -13,5 +13,20 @@
 	}
 	.error{
 		color: red;
+	}
+}
+
+.searchResults{
+	list-style-type: none;
+	li{
+		padding-bottom: 5px;
+		height: 64px;
+		vertical-align:middle;
+  		img{
+  			height: 64px;
+  		}
+  		span{
+  			display: inline-block;
+  		}
 	}
 }

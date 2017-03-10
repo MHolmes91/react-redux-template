@@ -1,31 +1,18 @@
-export const LOGIN_SUBMIT = 'LOGIN_SUBMIT';
-export const LOGOUT_SUBMIT = 'LOGOUT_SUBMIT';
-export const REGISTRATION_SUBMIT = 'REGISTER_SUBMIT';
+export const API_SEARCH = 'API_SEARCH'
+export const API_SEARCH_SUCCESS = 'API_SEARCH_SUCCESS'
+export const API_SEARCH_ERROR = 'API_SEARCH_ERROR'
+export const MESSAGE_SEARCH = 'MESSAGE_SEARCH';
+export const MESSAGE_SEARCH_SUCCESS = 'MESSAGE_SEARCH_SUCCESS';
+export const MESSAGE_SEARCH_ERROR = 'MESSAGE_SEARCH_ERROR';
 
-export function submitLogin(username, password){
+export function submitSearch(query, type = 'artist', limit = 20, offset = 0){
 	return {
-		type: LOGIN_SUBMIT,
+		type: MESSAGE_SEARCH,
 		data: {
-			username: username,
-			password: password
-		}
-	}
-}
-
-export function submitLogout(){
-	return {
-		type: LOGOUT_SUBMIT
-	}
-}
-
-export function submitRegistration(username, password, email, name){
-	return {
-		type: REGISTRATION_SUBMIT,
-		data: {
-			username: username,
-			password: password,
-			email: email,
-			name: name
+			query: query,
+			type: type,
+			limit: limit,
+			offset: offset
 		}
 	}
 }

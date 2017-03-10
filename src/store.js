@@ -1,26 +1,41 @@
 import {createStore, applyMiddleware} from 'redux';
 import { combineForms } from 'react-redux-form';
+import { combineReducers } from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import createLogger from 'redux-logger';
+import { routerReducer, routerMiddleware, push } from 'react-router-redux';
+import { browserHistory } from 'react-router';
+
 import templateApp from './reducers';
-import { combineReducers } from 'redux'
+import {
+	searchWatcher,
+} from './sagas';
 
-const initialRegisterFormState = {
-	username: '',
-	password: '',
-	confirmPassword: '',
-	email: ''
+import {
+	apiSearchWatcher,
+} from './sagas/api.js';
+
+const routerHistoryMiddleware = routerMiddleware(browserHistory);
+const sagaMiddleware = createSagaMiddleware();
+const loggerMiddleware = createLogger();
+
+const initialSearchFormState = {
+	query: '',
+	type: 'artist'
 };
 
-const initialLoginFormState = {
-	username: '',
-	password: '',
-};
+const store = createStore(
+	combineReducers({
+		formModels: combineForms({
+			searchForm: initialSearchFormState
+		}, 'formModels'),
+		templateApp,
+		routing: routerReducer
+	}),
+	applyMiddleware(sagaMiddleware, loggerMiddleware, routerHistoryMiddleware)
+);
 
-const store = createStore(combineReducers({
-	formModels: combineForms({
-		registerForm: initialRegisterFormState,
-		loginForm: initialLoginFormState
-	}, 'formModels'),
-	templateApp: templateApp
-}));
+sagaMiddleware.run(apiSearchWatcher);
+sagaMiddleware.run(searchWatcher);
 
 export default store;

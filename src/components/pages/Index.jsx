@@ -1,27 +1,25 @@
 import React from 'react';
+import SearchForm from '../../containers/forms/SearchContainer.jsx';
+import SearchResults from '../../containers/blocks/SearchResultsContainer.jsx';
 import { Link } from 'react-router';
-import Start from './Start.jsx';
-import Dashboard from './Dashboard.jsx';
+
+//Example of using an image and a link
+let templateImageSrc = require('../../assets/template-image.png');
  
 export default class Index extends React.Component {
-	constructor(props) {
-	    super(props);
-	    console.log('hello props');
-	    console.log(props);
-	    this.user = props.user ? props.user : 'World';
-	    this.isLoggedIn = !!props.user;
-	}
-
 	render() {
-		if(this.isLoggedIn){
-			return (
-				<Dashboard user={this.user} />
-			)
-		}
-		else{
-			return (
-				<Start />
-			)
-		}
+		return (
+			<div>
+				<img src={ templateImageSrc } />
+				<h1>
+					Search For Music
+				</h1>
+				<SearchForm />
+				<br />
+				<SearchResults />
+				<br />
+				<a href="https://api.spotify.com" target="_blank">Powered by the Spotify API</a>
+			</div>
+		)
 	}
 }

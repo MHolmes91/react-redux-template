@@ -1,29 +1,35 @@
 import { combineReducers } from 'redux'
-import { LOGIN_SUBMIT, LOGOUT_SUBMIT, REGISTRATION_SUBMIT } from '../actions'
+import {
+	MESSAGE_SEARCH,
+	MESSAGE_SEARCH_SUCCESS,
+	MESSAGE_SEARCH_ERROR
+} from '../actions'
 
-function login(state = {}, action){
+function search(state = {}, action){
 	switch(action.type){
-		case LOGIN_SUBMIT:
-			if(action.data.username && action.data.password){
-				return Object.assign({}, state, {
-					loggedInUser: action.data.username
-				});
-			}
-			else{
-				return state;
-			}
-		case REGISTRATION_SUBMIT:
-			if(action.data.username && action.data.password && action.data.email){
-				return Object.assign({}, state, {
-					loggedInUser: action.data.username
-				});
-			}
-			else{
-				return state;
-			}
-		case LOGOUT_SUBMIT:
+		case MESSAGE_SEARCH:
 			return Object.assign({}, state, {
-				loggedInUser: null
+				isPending: true,
+				error: false,
+				pendingType: action.data.type
+			});
+		case MESSAGE_SEARCH_SUCCESS:
+			let pendingType = state.pendingType;
+			
+			return Object.assign({}, state, {
+				isPending: false,
+				results: action.data,
+				error: false,
+				type: pendingType,
+				pendingType: false
+			});
+		case MESSAGE_SEARCH_ERROR:
+			return Object.assign({}, state, {
+				isPending: false,
+				results: [],
+				error: action.error,
+				type: false,
+				pendingType: false
 			});
 		default:
 			return state;
@@ -31,7 +37,7 @@ function login(state = {}, action){
 }
 
 const templateApp = combineReducers({
-	login:login
+	search: search
 })
 
 export default templateApp

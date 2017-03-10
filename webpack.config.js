@@ -9,7 +9,8 @@ module.exports = {
     ],
     output: {
         path: path.join(__dirname, 'www'),
-        filename: 'compiled.js'
+        filename: 'compiled.js',
+        sourceMapFilename: 'sourceMap.js.map'
     },
     module: {
         loaders: [
@@ -26,8 +27,8 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('css-loader!sass-loader')
             },
             {
-                test:/\.(jpg|png|gif|svg|pdf)$/,
-                loader: 'file-loader?name=[path][name].[ext]'
+                test:/\.(jpg|png|gif|svg|pdf|otf|ttf)$/,
+                loader: 'file-loader?name=/assets/[name].[ext]'
             }
         ]
     },
@@ -37,6 +38,7 @@ module.exports = {
             allChunks: true
         })
     ],
+    devtool: 'eval-source-map',
     devServer: {
         contentBase: "./www",
         historyApiFallback: {
